@@ -24,6 +24,7 @@ const fileNameFormat = (str) => {
   str = str.replace(/^\d+/, "");
   return str;
 };
+
 // 函数的方法
 const toCamelCaseLowerCase = (str) => {
   const camelCase = toCamelCase(str);
@@ -38,22 +39,26 @@ if (!fs.existsSync(apisDir)) {
 }
 // 格式化参数
 function formatReqParams(reqParams) {
+  const reqFast = "* @param {Object} params - 参数对象";
   if (!reqParams.length) {
-    return "*";
+    return reqFast;
   }
-  return reqParams
-    .map((param) => {
-      return `* @param {${param.type}} ${param.name} - ${param.desc}`;
-    })
-    .join("\n");
+  return (
+    reqFast +
+    reqParams
+      .map((param) => {
+        return `* @param {${param.type}} params.${param.name} - ${param.desc}`;
+      })
+      .join("\n")
+  );
 }
+// 循环分类
 apiData.forEach(async (item) => {
-  // 提取类名
   const classArr = item.apiActions[0].url && item.apiActions[0].url.split("/");
   const className = classArr && classArr[classArr.length - 2];
-  const categoryName =
-    className && className[0].toUpperCase() + className.slice(1);
-  const categoryCamelName = toCamelCase(className);
+  const categoryName = className[0].toUpperCase() + className.slice(1);
+  const fileName = toCamelCase(className);
+  // 循环接口
   const apiPromises = item.apiActions.map(async (api_action) => {
     const actionTitle = api_action.title || "未定义";
     const funText = api_action.url.split("/");
@@ -63,23 +68,24 @@ apiData.forEach(async (item) => {
 
     // 生成 JSDoc 注释
     const jsDocComment = `
-/**
- * ${actionTitle}
-${formatReqParams(api_action.reqParams)}
- * @returns {Promise<Object>} 返回 API 响应数据的 Promise
- */
-`;
+      /**
+       * ${actionTitle}
+      ${formatReqParams(api_action.reqParams)}
+      * @returns {Promise<Object>} 返回一个 Promise
+      * @throws {Error} 如果接口调用失败，则抛出错误
+      */
+    `;
 
     // 生成方法代码
     const methodCode = `
       static async ${toCamelCaseLowerCase(formattedTitle)}(params) {
         try {
-          const response = await request.${
+          const {data} = await request.${
             api_action.requestType.includes("get") ? "get" : "post"
           }("${api_action.url.replace("/api/", "")}", params);
-          return response.data;
+          return data;
         } catch (error) {
-          console.error("Error fetching ${translatedActionTitle} data:", error);
+          console.error("[API] Error: class: ${categoryName} - static: ${formattedTitle} ", error);
           throw error;
         }
       }
@@ -100,7 +106,7 @@ ${formatReqParams(api_action.reqParams)}
   /**
    * ${item.title} API 类
    */
-  export class ${categoryCamelName} {
+  export class ${categoryName} {
   ${apiMethodStrings
     .map((methodString) => {
       return methodString
@@ -118,9 +124,6 @@ ${formatReqParams(api_action.reqParams)}
     trailingComma: "all",
   });
   // 写入类代码到文件
-  const categoryFilePath = path.join(
-    apisDir,
-    `${fileNameFormat(categoryName)}.js`
-  );
+  const categoryFilePath = path.join(apisDir, `${fileNameFormat(fileName)}.js`);
   fs.writeFileSync(categoryFilePath, formattedClassCode);
 });
