@@ -409,7 +409,7 @@
         "requestType": "post,get",
         "respParams": [],
         "respText": "",
-        "title": "",
+        "title": "发送消息",
         "url": "/api/im/c2cAfterSendMsg"
       }
     ],

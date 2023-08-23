@@ -1,8 +1,6 @@
 const fs = require("fs");
-const axios = require("axios");
-const md5 = require("md5");
 const path = require("path");
-
+const prettier = require("prettier");
 // 读取api.json文件中的数据
 const apiData = require("./api.json");
 
@@ -26,19 +24,10 @@ const fileNameFormat = (str) => {
   str = str.replace(/^\d+/, "");
   return str;
 };
-const translateTextHan = async (text) => {
-  const url = `https://api.vvhan.com/api/fy?text=${text}`;
-  const request = axios.create();
-  request.defaults.headers.common["User-Agent"] =
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 Edg/112.0.1722.68";
-  const response = await request.get(url);
-  const result = response.data;
-  console.log(result);
-  const { data, success } = result;
-  if (!success) {
-    throw new Error("翻译失败");
-  }
-  return data.fanyi;
+// 函数的方法
+const toCamelCaseLowerCase = (str) => {
+  const camelCase = toCamelCase(str);
+  return camelCase[0].toLowerCase() + camelCase.slice(1);
 };
 
 // 创建apis目录（如果不存在）
@@ -47,51 +36,91 @@ const apisDir = "./apis";
 if (!fs.existsSync(apisDir)) {
   fs.mkdirSync(apisDir);
 }
+// 格式化参数
+function formatReqParams(reqParams) {
+  if (!reqParams.length) {
+    return "*";
+  }
+  return reqParams
+    .map((param) => {
+      return `* @param {${param.type}} ${param.name} - ${param.desc}`;
+    })
+    .join("\n");
+}
 apiData.forEach(async (item) => {
-  const categoryName = await translateTextHan(item.title || "Untitled");
-  const categoryCamelName = toCamelCase(categoryName);
-
-  // 收集所有 API 翻译操作的 Promise
+  // 提取类名
+  const classArr = item.apiActions[0].url && item.apiActions[0].url.split("/");
+  const className = classArr && classArr[classArr.length - 2];
+  const categoryName =
+    className && className[0].toUpperCase() + className.slice(1);
+  const categoryCamelName = toCamelCase(className);
   const apiPromises = item.apiActions.map(async (api_action) => {
-    const actionTitle = api_action.title || "Untitled";
-    const translatedActionTitle = await translateTextHan(actionTitle);
+    const actionTitle = api_action.title || "未定义";
+    const funText = api_action.url.split("/");
+    const funName = funText[funText.length - 1];
+    const translatedActionTitle = funName[0].toUpperCase() + funName.slice(1);
     const formattedTitle = toCamelCase(translatedActionTitle);
 
-    return `
-  /**
-   * ${actionTitle}
-   *
-   * @param {Object} params - 请求参数
-   * @returns {Promise<any>}
-   */
-  static async ${formattedTitle}(params) {
-    try {
-      const response = await request.${
-        api_action.requestType.includes("get") ? "get" : "post"
-      }("${api_action.url.replace("/api/", "")}", params);
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching ${translatedActionTitle} data:", error);
-      throw error;
-    }
-  }
+    // 生成 JSDoc 注释
+    const jsDocComment = `
+/**
+ * ${actionTitle}
+${formatReqParams(api_action.reqParams)}
+ * @returns {Promise<Object>} 返回 API 响应数据的 Promise
+ */
 `;
+
+    // 生成方法代码
+    const methodCode = `
+      static async ${toCamelCaseLowerCase(formattedTitle)}(params) {
+        try {
+          const response = await request.${
+            api_action.requestType.includes("get") ? "get" : "post"
+          }("${api_action.url.replace("/api/", "")}", params);
+          return response.data;
+        } catch (error) {
+          console.error("Error fetching ${translatedActionTitle} data:", error);
+          throw error;
+        }
+      }
+    `;
+
+    // 将 JSDoc 注释和方法代码连接在一起
+    return jsDocComment + methodCode;
   });
 
-  // 等待所有 API 翻译操作完成
-  const apiCodes = await Promise.all(apiPromises);
+  // 等待所有 API 动作的 Promise 完成
+  const apiMethodStrings = await Promise.all(apiPromises);
 
+  // 生成类代码
   const categoryClassCode = `
-// ${item.title} 
-import request from "../request";
-
-export class ${categoryCamelName} {
-${apiCodes.join("\n")}
-}
-`;
+  // ${item.title} 
+  import request from "../request";
+  
+  /**
+   * ${item.title} API 类
+   */
+  export class ${categoryCamelName} {
+  ${apiMethodStrings
+    .map((methodString) => {
+      return methodString
+        .split("\n")
+        .map((line) => `  ${line}`)
+        .join("\n");
+    })
+    .join("\n\n")}
+  }
+  `;
+  const formattedClassCode = await prettier.format(categoryClassCode, {
+    parser: "babel",
+    singleQuote: true,
+    semi: true,
+    trailingComma: "all",
+  });
+  // 写入类代码到文件
   const categoryFilePath = path.join(
     apisDir,
     `${fileNameFormat(categoryName)}.js`
   );
-  fs.writeFileSync(categoryFilePath, categoryClassCode);
+  fs.writeFileSync(categoryFilePath, formattedClassCode);
 });
