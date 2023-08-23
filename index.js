@@ -39,15 +39,43 @@ if (!fs.existsSync(apisDir)) {
 }
 // 格式化参数
 function formatReqParams(reqParams) {
+  const getStr = (param) => {
+    const typeOjb = {
+      int: "Number",
+      Long: "Number",
+      BigDecimal: "Number",
+      string: "String",
+    };
+    const pType = param.type;
+    const type =
+      (pType.includes("int") && typeOjb.int) ||
+      (pType.includes("Long") && typeOjb.Long) ||
+      (pType.includes("string") && typeOjb.string) ||
+      (pType.includes("BigDecimal") && typeOjb.BigDecimal) ||
+      "String";
+    // 通过正则去除空格，删除包含int long string 的文字
+    const desc = param.desc
+      .replace(/\s/g, "")
+      .replace(/(int|Long|string)/g, "");
+    // 动态生成参数名
+    const name =
+      param.required === "必填"
+        ? "params." + param.name
+        : `[params.${param.name}]`;
+    const descRes =
+      param.desc == desc ? ` - ${param.desc}` : param.desc + desc;
+    return `* @param {${type}} ${name} ${descRes} `;
+  };
   const reqFast = "* @param {Object} params - 参数对象";
   if (!reqParams.length) {
     return reqFast;
   }
   return (
     reqFast +
+    "\n" +
     reqParams
       .map((param) => {
-        return `* @param {${param.type}} params.${param.name} - ${param.desc}`;
+        return `${getStr(param)}`;
       })
       .join("\n")
   );
@@ -106,7 +134,7 @@ apiData.forEach(async (item) => {
   /**
    * ${item.title} API 类
    */
-  export class ${categoryName} {
+  export default class ${categoryName} {
   ${apiMethodStrings
     .map((methodString) => {
       return methodString
