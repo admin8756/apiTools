@@ -62,11 +62,10 @@ function formatReqParams(reqParams) {
       param.required === "必填"
         ? "params." + param.name
         : `[params.${param.name}]`;
-    const descRes =
-      param.desc == desc ? ` - ${param.desc}` : param.desc + desc;
+    const descRes = param.desc == desc ? ` - ${param.desc}` : param.desc + desc;
     return `* @param {${type}} ${name} ${descRes} `;
   };
-  const reqFast = "* @param {Object} params - 参数对象";
+  const reqFast = "* @param {Object} params - 行参";
   if (!reqParams.length) {
     return reqFast;
   }
@@ -80,12 +79,23 @@ function formatReqParams(reqParams) {
       .join("\n")
   );
 }
+// 生成方法注释
+const methodComment = (arr) => {
+  if(!arr.length) {
+    return '*'
+  }else{
+    return arr.map(item => {
+      return `* @property {Function} ${item.fun} - ${item.title}`
+    }).join('\n')
+  }
+};
 // 循环分类
 apiData.forEach(async (item) => {
   const classArr = item.apiActions[0].url && item.apiActions[0].url.split("/");
   const className = classArr && classArr[classArr.length - 2];
   const categoryName = className[0].toUpperCase() + className.slice(1);
   const fileName = toCamelCase(className);
+  const funList = []
   // 循环接口
   const apiPromises = item.apiActions.map(async (api_action) => {
     const actionTitle = api_action.title || "未定义";
@@ -94,16 +104,19 @@ apiData.forEach(async (item) => {
     const translatedActionTitle = funName[0].toUpperCase() + funName.slice(1);
     const formattedTitle = toCamelCase(translatedActionTitle);
 
-    // 生成 JSDoc 注释
+    // 生成 参数 注释
     const jsDocComment = `
       /**
        * ${actionTitle}
       ${formatReqParams(api_action.reqParams)}
       * @returns {Promise<Object>} 返回一个 Promise
-      * @throws {Error} 如果接口调用失败，则抛出错误
+      * @exports ${categoryName}.${funName}
       */
     `;
-
+    funList.push({
+      title: actionTitle,
+      fun: toCamelCaseLowerCase(formattedTitle),
+    })
     // 生成方法代码
     const methodCode = `
       static async ${toCamelCaseLowerCase(formattedTitle)}(params) {
@@ -128,11 +141,12 @@ apiData.forEach(async (item) => {
 
   // 生成类代码
   const categoryClassCode = `
-  // ${item.title} 
   import request from "../request";
   
   /**
    * ${item.title} API 类
+   ${methodComment(funList)}
+   * @module ${categoryName}
    */
   export default class ${categoryName} {
   ${apiMethodStrings
