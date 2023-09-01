@@ -1,1492 +1,1773 @@
 [
   {
-    "apiActions": [
-      {
-        "reqParams": [],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "国家列表",
-        "url": "/api/account/countryList"
-      },
-      {
-        "reqParams": [
+      "apiActions": [
           {
-            "desc": "电子邮箱",
-            "name": "email",
-            "required": "必填",
-            "type": "String"
+              "desc": "",
+              "reqParams": [],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "国家列表",
+              "url": "/api/account/countryList"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "电子邮箱",
+                      "name": "email",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "发送邮箱验证码",
+              "url": "/api/account/sendEmailCode"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "国籍",
+                      "name": "nationCode",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "手机号码",
+                      "name": "mobile",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "发送短信验证码",
+              "url": "/api/account/sendSmsCode"
+          },
+          {
+              "desc": "",
+              "reqParams": [],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "图片验证码",
+              "url": "/api/account/captcha"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "注册类型",
+                      "name": "rtype",
+                      "required": "必填",
+                      "type": "String mobile-手机注册 email-邮箱注册"
+                  },
+                  {
+                      "desc": "国籍",
+                      "name": "nationCode",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "手机号码",
+                      "name": "mobile",
+                      "required": "手机注册必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "短信验证码",
+                      "name": "smsCode",
+                      "required": "手机注册必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "电子邮箱",
+                      "name": "email",
+                      "required": "邮箱注册必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "邮箱验证码",
+                      "name": "emailCode",
+                      "required": "邮箱注册必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "账号密码",
+                      "name": "userPwd",
+                      "required": "必填",
+                      "type": "String 小写md5"
+                  },
+                  {
+                      "desc": "邀请人UID",
+                      "name": "inviteUid",
+                      "required": "选填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "注册",
+              "url": "/api/account/register"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "账号",
+                      "name": "account",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "密码",
+                      "name": "password",
+                      "required": "必填",
+                      "type": "String 小写md5"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "登录",
+              "url": "/api/account/login"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "退出",
+              "url": "/api/account/logout"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "检查是否登录",
+              "url": "/api/account/checkLogin"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "重置类型",
+                      "name": "findType",
+                      "required": "必填",
+                      "type": "String mobile-通过手机 email-通过邮箱"
+                  },
+                  {
+                      "desc": "操作",
+                      "name": "operate",
+                      "required": "必填",
+                      "type": "String captcha-图片验证 verify-短信或邮箱验证码验证 reset-重设密码"
+                  },
+                  {
+                      "desc": "账号",
+                      "name": "account",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "短信验证码",
+                      "name": "smsCode",
+                      "required": "手机验证必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "邮箱验证码",
+                      "name": "emailCode",
+                      "required": "邮箱验证必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "验证Token",
+                      "name": "clientTokenId",
+                      "required": "操作为verify或reset时必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "登录密码",
+                      "name": "userPwd",
+                      "required": "操作为reset时必填",
+                      "type": "String 小写md5"
+                  },
+                  {
+                      "desc": "确认密码",
+                      "name": "rePwd",
+                      "required": "操作为reset时必填",
+                      "type": "String 小写md5"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "重置密码验证",
+              "url": "/api/account/findPwdVerify"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "电子邮箱",
+                      "name": "account",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "验证Token",
+                      "name": "clientTokenId",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "发送重置密码邮箱验证码",
+              "url": "/api/account/sendResetPwdEmail"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "手机",
+                      "name": "account",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "验证Token",
+                      "name": "clientTokenId",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "发送重置密码短信验证码",
+              "url": "/api/account/sendResetPwdSms"
           }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "发送邮箱验证码",
-        "url": "/api/account/sendEmailCode"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "国籍",
-            "name": "nationCode",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "手机号码",
-            "name": "mobile",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "发送短信验证码",
-        "url": "/api/account/sendSmsCode"
-      },
-      {
-        "reqParams": [],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "图片验证码",
-        "url": "/api/account/captcha"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "注册类型",
-            "name": "rtype",
-            "required": "必填",
-            "type": "String mobile-手机注册 email-邮箱注册"
-          },
-          {
-            "desc": "国籍",
-            "name": "nationCode",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "手机号码",
-            "name": "mobile",
-            "required": "手机注册必填",
-            "type": "String"
-          },
-          {
-            "desc": "短信验证码",
-            "name": "smsCode",
-            "required": "手机注册必填",
-            "type": "String"
-          },
-          {
-            "desc": "电子邮箱",
-            "name": "email",
-            "required": "邮箱注册必填",
-            "type": "String"
-          },
-          {
-            "desc": "邮箱验证码",
-            "name": "emailCode",
-            "required": "邮箱注册必填",
-            "type": "String"
-          },
-          {
-            "desc": "账号密码",
-            "name": "userPwd",
-            "required": "必填",
-            "type": "String 小写md5"
-          },
-          {
-            "desc": "邀请人UID",
-            "name": "inviteUid",
-            "required": "选填",
-            "type": "Long"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "注册",
-        "url": "/api/account/register"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "账号",
-            "name": "account",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "密码",
-            "name": "password",
-            "required": "必填",
-            "type": "String 小写md5"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "登录",
-        "url": "/api/account/login"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "退出",
-        "url": "/api/account/logout"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "检查是否登录",
-        "url": "/api/account/checkLogin"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "重置类型",
-            "name": "findType",
-            "required": "必填",
-            "type": "String mobile-通过手机 email-通过邮箱"
-          },
-          {
-            "desc": "操作",
-            "name": "operate",
-            "required": "必填",
-            "type": "String captcha-图片验证 verify-短信或邮箱验证码验证 reset-重设密码"
-          },
-          {
-            "desc": "账号",
-            "name": "account",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "短信验证码",
-            "name": "smsCode",
-            "required": "手机验证必填",
-            "type": "String"
-          },
-          {
-            "desc": "邮箱验证码",
-            "name": "emailCode",
-            "required": "邮箱验证必填",
-            "type": "String"
-          },
-          {
-            "desc": "验证Token",
-            "name": "clientTokenId",
-            "required": "操作为verify或reset时必填",
-            "type": "String"
-          },
-          {
-            "desc": "登录密码",
-            "name": "userPwd",
-            "required": "操作为reset时必填",
-            "type": "String 小写md5"
-          },
-          {
-            "desc": "确认密码",
-            "name": "rePwd",
-            "required": "操作为reset时必填",
-            "type": "String 小写md5"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "重置密码验证",
-        "url": "/api/account/findPwdVerify"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "电子邮箱",
-            "name": "account",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "验证Token",
-            "name": "clientTokenId",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "发送重置密码邮箱验证码",
-        "url": "/api/account/sendResetPwdEmail"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "手机",
-            "name": "account",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "验证Token",
-            "name": "clientTokenId",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "发送重置密码短信验证码",
-        "url": "/api/account/sendResetPwdSms"
-      }
-    ],
-    "title": "账户"
+      ],
+      "title": "账户"
   },
   {
-    "apiActions": [
-      {
-        "reqParams": [
+      "apiActions": [
           {
-            "desc": "appID",
-            "name": "appId",
-            "required": "必填",
-            "type": "String"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "appID",
+                      "name": "appId",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "检查版本更新",
+              "url": "/api/version/index"
           }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "检查版本更新",
-        "url": "/api/version/index"
-      }
-    ],
-    "title": "版本信息"
+      ],
+      "title": "版本信息"
   },
   {
-    "apiActions": [
-      {
-        "reqParams": [],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "分类列表",
-        "url": "/api/article/categoryList"
-      },
-      {
-        "reqParams": [
+      "apiActions": [
           {
-            "desc": "分类ID",
-            "name": "cateId",
-            "required": "选填",
-            "type": "Long"
+              "desc": "",
+              "reqParams": [],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "分类列表",
+              "url": "/api/article/categoryList"
           },
           {
-            "desc": "分页页码",
-            "name": "pn",
-            "required": "选填",
-            "type": "int 默认1"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "分类ID",
+                      "name": "cateId",
+                      "required": "选填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "分页页码",
+                      "name": "pn",
+                      "required": "选填",
+                      "type": "int 默认1"
+                  },
+                  {
+                      "desc": "分页大小",
+                      "name": "ps",
+                      "required": "选填",
+                      "type": "int 默认20"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "文章列表",
+              "url": "/api/article/list"
           },
           {
-            "desc": "分页大小",
-            "name": "ps",
-            "required": "选填",
-            "type": "int 默认20"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "文章列表",
-        "url": "/api/article/list"
-      },
-      {
-        "reqParams": [
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "文章ID",
+                      "name": "articleId",
+                      "required": "必填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "文章详情",
+              "url": "/api/article/detail"
+          },
           {
-            "desc": "文章ID",
-            "name": "articleId",
-            "required": "必填",
-            "type": "Long"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "文章详情",
-        "url": "/api/article/detail"
-      },
-      {
-        "reqParams": [
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "关键词",
+                      "name": "keyword",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "搜索列表",
+              "url": "/api/article/search"
+          },
           {
-            "desc": "关键词",
-            "name": "keyword",
-            "required": "必填",
-            "type": "String"
+              "desc": "",
+              "reqParams": [],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "解决方案",
+              "url": "/api/article/solutionList"
           }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "搜索列表",
-        "url": "/api/article/search"
-      },
-      {
-        "reqParams": [],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "解决方案",
-        "url": "/api/article/solutionList"
-      }
-    ],
-    "title": "文章相关"
+      ],
+      "title": "文章相关"
   },
   {
-    "apiActions": [
-      {
-        "reqParams": [],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "首页",
-        "url": "/api/home/index"
-      }
-    ],
-    "title": "首页相关"
+      "apiActions": [
+          {
+              "desc": "",
+              "reqParams": [],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "公式列表",
+              "url": "/api/formula/list"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "公式ID",
+                      "name": "id",
+                      "required": "必填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "单个公式",
+              "url": "/api/formula/detail"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "公式ID",
+                      "name": "id",
+                      "required": "必填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "公式参数",
+                      "name": "paras",
+                      "required": "必填",
+                      "type": "Map"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "公式运算结果",
+              "url": "/api/formula/result"
+          }
+      ],
+      "title": "公式相关"
   },
   {
-    "apiActions": [
-      {
-        "reqParams": [],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "回调",
-        "url": "/api/im/call"
-      },
-      {
-        "reqParams": [],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "发送消息",
-        "url": "/api/im/c2cAfterSendMsg"
-      }
-    ],
-    "title": "IM回调"
+      "apiActions": [
+          {
+              "desc": "",
+              "reqParams": [],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "首页",
+              "url": "/api/home/index"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "关键词",
+                      "name": "keyword",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "全局搜索",
+              "url": "/api/home/search"
+          }
+      ],
+      "title": "首页相关"
   },
   {
-    "apiActions": [
-      {
-        "reqParams": [
+      "apiActions": [
           {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
+              "desc": "",
+              "reqParams": [],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "回调",
+              "url": "/api/im/call"
           },
           {
-            "desc": "商品id",
-            "name": "mid",
-            "required": "必填",
-            "type": "Long"
-          },
-          {
-            "desc": "添加数量",
-            "name": "num",
-            "required": "必填",
-            "type": "Long"
+              "desc": "",
+              "reqParams": [],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "",
+              "url": "/api/im/c2cAfterSendMsg"
           }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "添加",
-        "url": "/api/inquiry/add"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "商品id",
-            "name": "mid",
-            "required": "必填",
-            "type": "Long"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "查询",
-        "url": "/api/inquiry/item"
-      }
-    ],
-    "title": "询盘"
+      ],
+      "title": "IM回调"
   },
   {
-    "apiActions": [
-      {
-        "reqParams": [
+      "apiActions": [
           {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "商品id",
+                      "name": "mid",
+                      "required": "必填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "添加数量",
+                      "name": "num",
+                      "required": "必填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "添加",
+              "url": "/api/inquiry/add"
           },
           {
-            "desc": "分页页码",
-            "name": "pn",
-            "required": "否",
-            "type": "int 默认1"
-          },
-          {
-            "desc": "分页大小",
-            "name": "ps",
-            "required": "否",
-            "type": "int 默认20"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "商品id",
+                      "name": "mid",
+                      "required": "必填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "查询",
+              "url": "/api/inquiry/item"
           }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "用户信息",
-        "url": "/api/my/index/userInfo"
-      }
-    ],
-    "title": "个人中心"
+      ],
+      "title": "询盘"
   },
   {
-    "apiActions": [
-      {
-        "reqParams": [
+      "apiActions": [
           {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "用户信息",
+              "url": "/api/my/index/userInfo"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "分页页码",
+                      "name": "pn",
+                      "required": "选填",
+                      "type": "int 默认1"
+                  },
+                  {
+                      "desc": "分页大小",
+                      "name": "ps",
+                      "required": "选填",
+                      "type": "int 默认20"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "产品收藏列表",
+              "url": "/api/my/index/favoriteProdList"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "分页页码",
+                      "name": "pn",
+                      "required": "选填",
+                      "type": "int 默认1"
+                  },
+                  {
+                      "desc": "分页大小",
+                      "name": "ps",
+                      "required": "选填",
+                      "type": "int 默认20"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "知识收藏列表",
+              "url": "/api/my/index/favoriteArticleList"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "文章分类喜好",
+              "url": "/api/my/index/likeArticleCateIds"
           }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "谷歌验证key",
-        "url": "/api/my/security/gaSecretKey"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "用户姓名",
-            "name": "realName",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "修改姓名",
-        "url": "/api/my/security/updateRealName"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "用户密码",
-            "name": "userPwd",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "用户旧密码",
-            "name": "oldPwd",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "用户确认密码",
-            "name": "rePwd",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "修改密码",
-        "url": "/api/my/security/updatePwd"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "资金密码",
-            "name": "fundPwd",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "旧资金密码",
-            "name": "oldPwd",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "修改资金密码",
-        "url": "/api/my/security/updateFundPwd"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "谷歌验证key",
-            "name": "gaKey",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "动态验证码",
-            "name": "gaCode",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "绑定谷歌验证",
-        "url": "/api/my/security/bindGaKey"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "动态验证码",
-            "name": "gaCode",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "解绑谷歌验证",
-        "url": "/api/my/security/unbindGaKey"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "发送旧手机验证码",
-        "url": "/api/my/security/sendOldSmsCode"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "国家代码",
-            "name": "nationCode",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "用户手机",
-            "name": "mobile",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "发送手机验证码",
-        "url": "/api/my/security/sendSmsCode"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "国家代码",
-            "name": "nationCode",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "新手机",
-            "name": "mobile",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "新手机短信验证码",
-            "name": "smsCode",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "当前手机短信验证码",
-            "name": "oldSmsCode",
-            "required": "非必填",
-            "type": "String 更换手机时必填"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "绑定手机",
-        "url": "/api/my/security/bindMobile"
-      }
-    ],
-    "title": "安全中心"
+      ],
+      "title": "个人中心"
   },
   {
-    "apiActions": [
-      {
-        "reqParams": [
+      "apiActions": [
           {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "谷歌验证key",
+              "url": "/api/my/security/gaSecretKey"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "用户姓名",
+                      "name": "realName",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "修改姓名",
+              "url": "/api/my/security/updateRealName"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "用户密码",
+                      "name": "userPwd",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "用户旧密码",
+                      "name": "oldPwd",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "用户确认密码",
+                      "name": "rePwd",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "修改密码",
+              "url": "/api/my/security/updatePwd"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "资金密码",
+                      "name": "fundPwd",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "旧资金密码",
+                      "name": "oldPwd",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "修改资金密码",
+              "url": "/api/my/security/updateFundPwd"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "谷歌验证key",
+                      "name": "gaKey",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "动态验证码",
+                      "name": "gaCode",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "绑定谷歌验证",
+              "url": "/api/my/security/bindGaKey"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "动态验证码",
+                      "name": "gaCode",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "解绑谷歌验证",
+              "url": "/api/my/security/unbindGaKey"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "发送旧手机验证码",
+              "url": "/api/my/security/sendOldSmsCode"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "国家代码",
+                      "name": "nationCode",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "用户手机",
+                      "name": "mobile",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "发送手机验证码",
+              "url": "/api/my/security/sendSmsCode"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "国家代码",
+                      "name": "nationCode",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "新手机",
+                      "name": "mobile",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "新手机短信验证码",
+                      "name": "smsCode",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "当前手机短信验证码",
+                      "name": "oldSmsCode",
+                      "required": "非必填",
+                      "type": "String 更换手机时必填"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "绑定手机",
+              "url": "/api/my/security/bindMobile"
           }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "收货地址列表",
-        "url": "/api/my/shipAddress/list"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "地址id",
-            "name": "id",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "地址信息",
-        "url": "/api/my/shipAddress/item"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "地址id",
-            "name": "id",
-            "required": "修改必填",
-            "type": "Long"
-          },
-          {
-            "desc": "收货人",
-            "name": "name",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "收货人手机",
-            "name": "phone",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "收货地址",
-            "name": "address",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "保存收货地址",
-        "url": "/api/my/shipAddress/save"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "地址id",
-            "name": "id",
-            "required": "必填",
-            "type": "Long"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "删除收货地址",
-        "url": "/api/my/shipAddress/delete"
-      }
-    ],
-    "title": "收货地址"
+      ],
+      "title": "安全中心"
   },
   {
-    "apiActions": [
-      {
-        "reqParams": [
+      "apiActions": [
           {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "收货地址列表",
+              "url": "/api/my/shipAddress/list"
           },
           {
-            "desc": "商品id",
-            "name": "mid",
-            "required": "必填",
-            "type": "Long"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "地址id",
+                      "name": "id",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "地址信息",
+              "url": "/api/my/shipAddress/item"
           },
           {
-            "desc": "价格",
-            "name": "price",
-            "required": "必填",
-            "type": "BigDecimal"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "地址id",
+                      "name": "id",
+                      "required": "修改必填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "收货人",
+                      "name": "name",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "收货人手机",
+                      "name": "phone",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "收货地址",
+                      "name": "address",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "保存收货地址",
+              "url": "/api/my/shipAddress/save"
           },
           {
-            "desc": "备注",
-            "name": "remarks",
-            "required": "选填",
-            "type": "String"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "地址id",
+                      "name": "id",
+                      "required": "必填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "删除收货地址",
+              "url": "/api/my/shipAddress/delete"
           }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "创建订单",
-        "url": "/api/order/create"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "订单id",
-            "name": "orderId",
-            "required": "必填",
-            "type": "Long"
-          },
-          {
-            "desc": "收货地址",
-            "name": "shipAddress",
-            "required": "选填",
-            "type": "String"
-          },
-          {
-            "desc": "发货方式",
-            "name": "delivery",
-            "required": "选填",
-            "type": "String"
-          },
-          {
-            "desc": "收货时间",
-            "name": "receive",
-            "required": "选填",
-            "type": "String"
-          },
-          {
-            "desc": "备注",
-            "name": "remarks",
-            "required": "选填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "修改订单",
-        "url": "/api/order/update"
-      }
-    ],
-    "title": "订单"
+      ],
+      "title": "收货地址"
   },
   {
-    "apiActions": [
-      {
-        "reqParams": [],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "品牌列表",
-        "url": "/api/prod/brandList"
-      },
-      {
-        "reqParams": [
+      "apiActions": [
           {
-            "desc": "分类ID",
-            "name": "parentId",
-            "required": "选填",
-            "type": "Long"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "分类列表",
-        "url": "/api/prod/categoryList"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "品牌ID",
-            "name": "brandId",
-            "required": "否",
-            "type": "Long"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "商品id",
+                      "name": "mid",
+                      "required": "必填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "价格",
+                      "name": "price",
+                      "required": "必填",
+                      "type": "BigDecimal"
+                  },
+                  {
+                      "desc": "备注",
+                      "name": "remarks",
+                      "required": "选填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "创建订单",
+              "url": "/api/order/create"
           },
           {
-            "desc": "二级分类ID",
-            "name": "cid",
-            "required": "否",
-            "type": "Long"
-          },
-          {
-            "desc": "分页页码",
-            "name": "pn",
-            "required": "否",
-            "type": "int 默认1"
-          },
-          {
-            "desc": "分页大小",
-            "name": "ps",
-            "required": "否",
-            "type": "int 默认20"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "订单id",
+                      "name": "orderId",
+                      "required": "必填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "收货地址",
+                      "name": "shipAddress",
+                      "required": "选填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "发货方式",
+                      "name": "delivery",
+                      "required": "选填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "收货时间",
+                      "name": "receive",
+                      "required": "选填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "备注",
+                      "name": "remarks",
+                      "required": "选填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "修改订单",
+              "url": "/api/order/update"
           }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "产品型号列表",
-        "url": "/api/prod/modelList"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "型号ID",
-            "name": "modelId",
-            "required": "选填",
-            "type": "Long"
-          },
-          {
-            "desc": "规格字符串",
-            "name": "specStr",
-            "required": "选填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "产品型号详情",
-        "url": "/api/prod/detail"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "关键词",
-            "name": "keyword",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "搜索列表",
-        "url": "/api/prod/search"
-      }
-    ],
-    "title": "产品相关"
+      ],
+      "title": "订单"
   },
   {
-    "apiActions": [
-      {
-        "reqParams": [],
-        "requestTime": 0,
-        "requestType": "get",
-        "respParams": [],
-        "respText": "",
-        "title": "模板内容",
-        "url": "/api/template/index"
-      }
-    ],
-    "title": "模板"
+      "apiActions": [
+          {
+              "desc": "",
+              "reqParams": [],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "品牌列表",
+              "url": "/api/prod/brandList"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "分类ID",
+                      "name": "parentId",
+                      "required": "选填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "分类列表",
+              "url": "/api/prod/categoryList"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "品牌ID",
+                      "name": "brandId",
+                      "required": "否",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "分类ID",
+                      "name": "cid",
+                      "required": "否",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "分页页码",
+                      "name": "pn",
+                      "required": "否",
+                      "type": "int 默认1"
+                  },
+                  {
+                      "desc": "分页大小",
+                      "name": "ps",
+                      "required": "否",
+                      "type": "int 默认20"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "产品型号列表",
+              "url": "/api/prod/modelList"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "型号ID",
+                      "name": "modelId",
+                      "required": "选填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "规格字符串",
+                      "name": "specStr",
+                      "required": "选填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "产品型号详情",
+              "url": "/api/prod/detail"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "关键词",
+                      "name": "keyword",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "搜索列表",
+              "url": "/api/prod/search"
+          }
+      ],
+      "title": "产品相关"
   },
   {
-    "apiActions": [
-      {
-        "reqParams": [
+      "apiActions": [
           {
-            "desc": "业务类型 (worksheet,model,prod)",
-            "name": "bizType",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "业务ID",
-            "name": "bizId",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "文件",
-            "name": "upFile",
-            "required": "必填",
-            "type": "File"
+              "desc": "",
+              "reqParams": [],
+              "requestTime": 0,
+              "requestType": "get",
+              "respParams": [],
+              "respText": "",
+              "title": "模板内容",
+              "url": "/api/template/index"
           }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "上传",
-        "url": "/api/upload/fileUpload"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "业务类型 (worksheet",
-            "name": "bizType",
-            "required": "prod)",
-            "type": "model"
-          },
-          {
-            "desc": "业务ID",
-            "name": "bizId",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "获取文件列表",
-        "url": "/api/upload/getFileList"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "业务类型 (worksheet",
-            "name": "bizType",
-            "required": "prod)",
-            "type": "model"
-          },
-          {
-            "desc": "业务ID",
-            "name": "bizId",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "文件ID",
-            "name": "id",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "删除文件",
-        "url": "/api/upload/deleteFile"
-      }
-    ],
-    "title": "上传文件"
+      ],
+      "title": "模板"
   },
   {
-    "apiActions": [
-      {
-        "reqParams": [
+      "apiActions": [
           {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "业务类型 (worksheet,model,prod)",
+                      "name": "bizType",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "业务ID",
+                      "name": "bizId",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "文件",
+                      "name": "file",
+                      "required": "必填",
+                      "type": "File"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "上传",
+              "url": "/api/upload/fileUpload"
           },
           {
-            "desc": "文章ID",
-            "name": "articleId",
-            "required": "必填",
-            "type": "Long"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "业务类型 (worksheet",
+                      "name": "bizType",
+                      "required": "prod)",
+                      "type": "model"
+                  },
+                  {
+                      "desc": "业务ID",
+                      "name": "bizId",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "获取文件列表",
+              "url": "/api/upload/getFileList"
           },
           {
-            "desc": "评论内容",
-            "name": "content",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "评论ID",
-            "name": "pid",
-            "required": "选填",
-            "type": "Long"
-          },
-          {
-            "desc": "评论对象",
-            "name": "toName",
-            "required": "选填",
-            "type": "Long"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "业务类型 (worksheet",
+                      "name": "bizType",
+                      "required": "prod)",
+                      "type": "model"
+                  },
+                  {
+                      "desc": "业务ID",
+                      "name": "bizId",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "文件ID",
+                      "name": "id",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "删除文件",
+              "url": "/api/upload/deleteFile"
           }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "添加评论",
-        "url": "/api/user/addComment"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "评论ID",
-            "name": "commentId",
-            "required": "必填",
-            "type": "Long"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "删除评论",
-        "url": "/api/user/deleteComment"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "评论ID",
-            "name": "commentId",
-            "required": "必填",
-            "type": "Long"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "置顶评论",
-        "url": "/api/user/topComment"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "评论ID",
-            "name": "commentId",
-            "required": "必填",
-            "type": "Long"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "点赞评论",
-        "url": "/api/user/likeComment"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "文章ID",
-            "name": "articleId",
-            "required": "必填",
-            "type": "Long"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "点赞文章",
-        "url": "/api/user/likeArticle"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "逗号分隔的文章分类ID",
-            "name": "cateIds",
-            "required": "必填",
-            "type": "Long"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "文章分类喜好",
-        "url": "/api/user/likeArticleCate"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "国家码",
-            "name": "nationCode",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "公司",
-            "name": "company",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "职位",
-            "name": "position",
-            "required": "必填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "合作伙伴申请",
-        "url": "/api/user/agentApply"
-      }
-    ],
-    "title": "用户操作"
+      ],
+      "title": "上传文件"
   },
   {
-    "apiActions": [
-      {
-        "reqParams": [
+      "apiActions": [
           {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "文章ID",
+                      "name": "articleId",
+                      "required": "必填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "评论内容",
+                      "name": "content",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "评论ID",
+                      "name": "pid",
+                      "required": "选填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "评论对象",
+                      "name": "toName",
+                      "required": "选填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "添加评论",
+              "url": "/api/user/addComment"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "评论ID",
+                      "name": "commentId",
+                      "required": "必填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "删除评论",
+              "url": "/api/user/deleteComment"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "评论ID",
+                      "name": "commentId",
+                      "required": "必填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "置顶评论",
+              "url": "/api/user/topComment"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "评论ID",
+                      "name": "commentId",
+                      "required": "必填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "点赞评论",
+              "url": "/api/user/likeComment"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "文章ID",
+                      "name": "articleId",
+                      "required": "必填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "点赞文章",
+              "url": "/api/user/likeArticle"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "逗号分隔的文章分类ID",
+                      "name": "cateIds",
+                      "required": "必填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "文章分类喜好",
+              "url": "/api/user/likeArticleCate"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "收藏类型（1-产品,2-知识,3-动态）",
+                      "name": "type",
+                      "required": "必填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "收藏目标ID",
+                      "name": "targetId",
+                      "required": "必填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "添加收藏",
+              "url": "/api/user/addFavorite"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "收藏类型（1-产品,2-知识,3-动态）",
+                      "name": "type",
+                      "required": "必填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "收藏目标ID",
+                      "name": "targetId",
+                      "required": "必填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "删除收藏",
+              "url": "/api/user/delFavorite"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "收藏类型（1-产品,2-知识,3-动态）",
+                      "name": "type",
+                      "required": "必填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "收藏目标ID",
+                      "name": "targetId",
+                      "required": "必填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "收藏状态",
+              "url": "/api/user/getFavorite"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "国家码",
+                      "name": "nationCode",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "公司",
+                      "name": "company",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "职位",
+                      "name": "position",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "合作伙伴申请",
+              "url": "/api/user/agentApply"
           }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "分类列表",
-        "url": "/api/worksheet/categoryList"
-      },
-      {
-        "reqParams": [
+      ],
+      "title": "用户操作"
+  },
+  {
+      "apiActions": [
           {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "分类列表",
+              "url": "/api/worksheet/categoryList"
           },
           {
-            "desc": "状态",
-            "name": "state",
-            "required": "选填",
-            "type": "Long"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "状态",
+                      "name": "state",
+                      "required": "选填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "分页页码",
+                      "name": "pn",
+                      "required": "选填",
+                      "type": "int默认1"
+                  },
+                  {
+                      "desc": "分页大小",
+                      "name": "ps",
+                      "required": "选填",
+                      "type": "int默认20"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "工单列表",
+              "url": "/api/worksheet/list"
           },
           {
-            "desc": "分页页码",
-            "name": "pn",
-            "required": "选填",
-            "type": "int默认1"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "工单ID",
+                      "name": "sheetId",
+                      "required": "必填",
+                      "type": "Long"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "工单详情",
+              "url": "/api/worksheet/detail"
           },
           {
-            "desc": "分页大小",
-            "name": "ps",
-            "required": "选填",
-            "type": "int默认20"
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "售后条形码",
+                      "name": "prodCode",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "分类ID",
+                      "name": "cateId",
+                      "required": "必填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "问题描述",
+                      "name": "content",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "附件ID",
+                      "name": "bizId",
+                      "required": "选填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "添加工单",
+              "url": "/api/worksheet/add"
+          },
+          {
+              "desc": "",
+              "reqParams": [
+                  {
+                      "desc": "用户token",
+                      "name": "token",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "工单ID",
+                      "name": "sheetId",
+                      "required": "必填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "记录类型",
+                      "name": "type",
+                      "required": "必填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "内容",
+                      "name": "content",
+                      "required": "必填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "转交人ID",
+                      "name": "toUid",
+                      "required": "选填",
+                      "type": "Long"
+                  },
+                  {
+                      "desc": "转交人类型",
+                      "name": "toUserType",
+                      "required": "选填",
+                      "type": "String"
+                  },
+                  {
+                      "desc": "图片",
+                      "name": "images",
+                      "required": "选填",
+                      "type": "String"
+                  }
+              ],
+              "requestTime": 0,
+              "requestType": "post,get",
+              "respParams": [],
+              "respText": "",
+              "title": "记录工单",
+              "url": "/api/worksheet/record"
           }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "工单列表",
-        "url": "/api/worksheet/list"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "工单ID",
-            "name": "sheetId",
-            "required": "必填",
-            "type": "Long"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "产品型号详情",
-        "url": "/api/worksheet/detail"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "售后条形码",
-            "name": "prodCode",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "分类ID",
-            "name": "cateId",
-            "required": "必填",
-            "type": "Long"
-          },
-          {
-            "desc": "问题描述",
-            "name": "content",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "附件ID",
-            "name": "bizId",
-            "required": "选填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "添加工单",
-        "url": "/api/worksheet/add"
-      },
-      {
-        "reqParams": [
-          {
-            "desc": "用户token",
-            "name": "token",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "工单ID",
-            "name": "sheetId",
-            "required": "必填",
-            "type": "Long"
-          },
-          {
-            "desc": "记录类型",
-            "name": "type",
-            "required": "必填",
-            "type": "Long"
-          },
-          {
-            "desc": "内容",
-            "name": "content",
-            "required": "必填",
-            "type": "String"
-          },
-          {
-            "desc": "转交人ID",
-            "name": "toUid",
-            "required": "选填",
-            "type": "Long"
-          },
-          {
-            "desc": "转交人类型",
-            "name": "toUserType",
-            "required": "选填",
-            "type": "String"
-          },
-          {
-            "desc": "图片",
-            "name": "images",
-            "required": "选填",
-            "type": "String"
-          }
-        ],
-        "requestTime": 0,
-        "requestType": "post,get",
-        "respParams": [],
-        "respText": "",
-        "title": "记录工单",
-        "url": "/api/worksheet/record"
-      }
-    ],
-    "title": "工单相关"
+      ],
+      "title": "工单相关"
   }
 ]

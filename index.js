@@ -81,12 +81,14 @@ function formatReqParams(reqParams) {
 }
 // 生成方法注释
 const methodComment = (arr) => {
-  if(!arr.length) {
-    return '*'
-  }else{
-    return arr.map(item => {
-      return `* @property {Function} ${item.fun} - ${item.title}`
-    }).join('\n')
+  if (!arr.length) {
+    return "*";
+  } else {
+    return arr
+      .map((item) => {
+        return `* @property {Function} ${item.fun} - ${item.title}`;
+      })
+      .join("\n");
   }
 };
 // 循环分类
@@ -95,7 +97,7 @@ apiData.forEach(async (item) => {
   const className = classArr && classArr[classArr.length - 2];
   const categoryName = className[0].toUpperCase() + className.slice(1);
   const fileName = toCamelCase(className);
-  const funList = []
+  const funList = [];
   // 循环接口
   const apiPromises = item.apiActions.map(async (api_action) => {
     const actionTitle = api_action.title || "未定义";
@@ -107,16 +109,16 @@ apiData.forEach(async (item) => {
     // 生成 参数 注释
     const jsDocComment = `
       /**
-       * ${actionTitle}
-      ${formatReqParams(api_action.reqParams)}
-      * @returns {Promise<Object>} 返回一个 Promise
-      * @exports ${categoryName}.${funName}
-      */
+        * @name ${actionTitle}
+        ${formatReqParams(api_action.reqParams)}
+        * @returns {Promise :Object} 返回值
+        * @exports ${categoryName}.${funName}
+        */
     `;
     funList.push({
       title: actionTitle,
       fun: toCamelCaseLowerCase(formattedTitle),
-    })
+    });
     // 生成方法代码
     const methodCode = `
       static async ${toCamelCaseLowerCase(formattedTitle)}(params) {
